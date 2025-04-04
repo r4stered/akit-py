@@ -1,4 +1,4 @@
-name: Build
+name: Format
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build akit-py
+    name: Format Check
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +20,8 @@ jobs:
         with:
           python-version-file: ".python-version"
 
-      - name: "Install the project"
+      - name: Install the project
         run: uv sync --all-extras --dev
 
+      - name: Run Ruff
+        run: ruff check --output-format=github .
