@@ -23,5 +23,8 @@ jobs:
       - name: Install the project
         run: uv sync --all-extras --dev
 
-      - name: Run Ruff
+      - name: Ruff Lint
         run: uv run ruff check --output-format=github .
+
+      - name: Ruff Format
+        run: uv run ruff format --check
